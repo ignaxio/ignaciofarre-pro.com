@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains galeria.module.
+ */
+
+// Store TARDIS preprocess theme functions in a separate .inc file.
+\Drupal::moduleHandler()->loadInclude('galeria', 'inc', 'galeria.theme');
+
+//use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+//function galeria_help($route_name, RouteMatchInterface $route_match) {
+//  switch ($route_name) {
+//    // Main module help for the galeria module.
+//    case 'help.page.galeria':
+//      $output = '';
+//      $output .= '<h3>' . t('About') . '</h3>';
+//      $output .= '<p>' . t('View plugin to display nodes has a galeria') . '</p>';
+//      return $output;
+//
+//    default:
+//  }
+//}
+
+/**
+ * Implements hook_theme().
+ */
+function galeria_theme() {
+  return [
+    'galeria' => [
+      'file' => 'galeria.theme.inc',
+    ],
+  ];
+}

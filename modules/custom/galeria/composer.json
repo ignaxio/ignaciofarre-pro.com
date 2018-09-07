@@ -1,0 +1,14 @@
+{
+  "name": "drupal/galeria",
+  "type": "drupal-module",
+  "description": "View plugin to display nodes has a galeria",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/galeria",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/galeria",
+    "source": "http://cgit.drupalcode.org/galeria"
+  },
+  "require": { }
+}

@@ -1,0 +1,19 @@
+name: Basic
+type: theme
+description: 'Tema con boostrap 3 basico'
+package: Custom
+core: 8.x
+libraries:
+  - basic/global-styling
+ 
+base theme: false
+
+regions:
+  header: 'Cabecera de la web'
+  menu_principal: 'Menu principal'
+  migas: 'Migas de pan'
+  titulo: 'Titulo de pagina'
+  top_bar: 'Barra superior para mensajes'
+  menu_secundario: 'Menu secundario'
+  content: 'Contenido'
+  pie: 'Pie'

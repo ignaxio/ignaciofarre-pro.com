@@ -1,0 +1,7 @@
+galeria:
+  version: 1.x
+  css:
+    theme:
+      css/galeria.css: {}
+  js:
+    js/galeria.js: {}

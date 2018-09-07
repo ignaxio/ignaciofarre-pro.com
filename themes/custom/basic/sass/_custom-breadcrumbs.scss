@@ -1,0 +1,79 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+/*$breadcrumb-separator:          "/" !default;*/
+.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+/*.btn-breadcrumb .btn:not(:last-child):after {
+  border-left: 10px solid #5cb85c;
+}*/
+/*.btn-breadcrumb .btn:not(:last-child):before {
+  border-left: 10px solid #4cae4c;
+}*/
+
+.btn-breadcrumb .btn:hover:not(:last-child):before {
+  border-left: 10px solid $azul-oscuro;
+}
+.btn-breadcrumb .btn:hover:not(:last-child):after {
+  border-left: 10px solid #000;
+}
+
+
+.btn-breadcrumb .btn:not(:last-child):before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid rgb(173, 173, 173);
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 3;
+}
+
+.btn-breadcrumb .btn:not(:last-child):after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid #000;
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  left: 100%;
+  z-index: 3;
+}
+
+
+.basic-migas{
+  background-color: #000;
+  .btn-breadcrumb {
+    p {
+      display: inline-block;
+      color: $azul-oscuro;
+      margin: 0 0 0 12px;
+      padding: 6px 12px;
+      position: relative;
+    }
+    a.btn {
+      color: $gray-lighter;
+      margin-left: 12px;
+      border: 0;
+      &:hover {
+        color: $azul-oscuro;
+        text-decoration: none; 
+      }
+      &:first-child {
+        margin-left: -12px;
+      }
+    }
+  }
+}

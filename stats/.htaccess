@@ -1,0 +1,7 @@
+AuthName "ignaciofarre.com statistics"
+AuthType Basic
+AuthUserFile /home/ignacio/.stats-htpasswd
+require valid-user
+<Files .stats-htpasswd>
+deny from all
+</Files>

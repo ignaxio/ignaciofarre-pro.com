@@ -1,0 +1,73 @@
+{#
+/**
+ * Default theme implementation for Views to output a GALERIA archive.
+ *
+ * Available variables:
+ * - options: View plugin style options:
+ *   - classes: CSS classes.
+ *   - nesting: Whether months should be nested inside years.
+ *   - path: Link path. Eg.: example.com/GALERIA/2016/03
+ *   - time_pool: Two-dimension array containing years and months with content.
+ *
+ * @see template_preprocess_views_view_galeria()
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('galeria/galeria') }}
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-full" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {#<button type="button" class="btn btn-primary">Save changes</button>#}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="galeria">
+
+  <div class="separador"></div>
+
+  {#<div class="etiquetas">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Todas</a></li>
+        {% for key, etiqueta in options.etiquetasGenerales %}
+        <li role="presentation"><a href="{{ url('<current>')|render ~ '/' ~ key }}">{{ etiqueta }}</a></li>
+        {% endfor %}
+    </ul>
+  </div>#}
+  <div class="row imagenes">
+    {% for key, nodo in options.nodos %}      
+      <div id="{{ nodo.id }}" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="image-box text-center">
+          <img class="img-responsive" src="{{ nodo.imagenes[0].urlImagenLarge }}" alt="{{ nodo.imagenes[0].alt }}">
+          <div class="overlay-top">
+            <div class="text">
+              <h3>{#<a href="{{ nodo.url }}">#}{{ nodo.titulo }}{#</a>#}</h3>
+                {#{% for key, etiqueta in nodo.etiquetas %}
+                <p class="small">{{ etiqueta }}</p>
+              {% endfor %}#}
+            </div>
+          </div>
+          <div class="overlay-bottom">
+            <a href="#" class="btn" data-toggle="modal" data-target="#myModal" data-nodoid="{{ nodo.id }}">Ver detalles</a>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
