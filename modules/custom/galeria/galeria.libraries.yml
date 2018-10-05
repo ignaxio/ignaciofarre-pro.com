@@ -5,3 +5,5 @@ galeria:
       css/galeria.css: {}
   js:
     js/galeria.js: {}
+  dependencies:
+    - core/jquery

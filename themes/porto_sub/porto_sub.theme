@@ -1,0 +1,44 @@
+<?php
+
+use Drupal\image\Entity\ImageStyle;
+
+function porto_sub_preprocess_page(array &$variables) {
+  $term_id = \Drupal::routeMatch()->getRawParameter('taxonomy_term');
+  if ($term_id == 1) {
+    $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term_id);
+    $variables['imagen_categoria']['alt'] = $term->field_imagen_categoria->alt;
+    $variables['imagen_categoria']['url'] = file_create_url($term->field_imagen_categoria->entity->getFileUri());
+  } elseif (isset($variables['node'])) {
+    
+    if (isset($variables['node']->field_imagen_principal->entity)) {
+      // generamos los el estilo de imagen
+      $styleCabecera = ImageStyle::load('imagen_de_cabecera');
+      $image_uri = $variables['node']->field_imagen_principal->entity->field_media_image_1->entity->getFileUri();
+      $destination = $styleCabecera->buildUri($image_uri);
+      $styleCabecera->createDerivative($image_uri, $destination);
+      
+      $variables['imagen_categoria']['url'] = file_create_url($destination);
+    
+    }
+  }
+}
+
+function porto_sub_preprocess_node(array &$variables) {
+  $node = $variables['node'];
+  if ($node->type[0]->target_id == "article") {
+    if (isset($node->field_imagen_principal->entity)) {
+      // generamos los el estilo de imagen
+      $styleSlider = ImageStyle::load('imagen_para_slider_2000_x_900');
+      $image_uri = $node->field_imagen_principal->entity->field_media_image_1->entity->getFileUri();
+      $destination = $styleSlider->buildUri($image_uri);
+      $styleSlider->createDerivative($image_uri, $destination);
+    }
+    if (isset($node->field_imagenes_para_slider->entity)) {
+      // generamos los el estilo de imagen
+      $styleSlider = ImageStyle::load('imagen_para_slider_2000_x_900');
+      $image_uri = $node->field_imagenes_para_slider->entity->field_media_image_1->entity->getFileUri();
+      $destination = $styleSlider->buildUri($image_uri);
+      $styleSlider->createDerivative($image_uri, $destination);
+    }
+  }
+}
